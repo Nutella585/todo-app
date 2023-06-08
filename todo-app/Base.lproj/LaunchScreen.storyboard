@@ -19,8 +19,9 @@
                             <view contentMode="center" translatesAutoresizingMaskIntoConstraints="NO" id="t5B-Ss-Ctf">
                                 <rect key="frame" x="108" y="338" width="177" height="176"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GA0-ai-bOT">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="clip" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GA0-ai-bOT">
                                         <rect key="frame" x="35" y="32.000000000000007" width="99" height="107.66666666666669"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <string key="text">Todo
 App
 
@@ -32,21 +33,17 @@ App
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="linkColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="GA0-ai-bOT" secondAttribute="bottom" constant="36.333333333333314" id="mit-un-b7p"/>
-                                    <constraint firstItem="GA0-ai-bOT" firstAttribute="leading" secondItem="t5B-Ss-Ctf" secondAttribute="leading" constant="35" id="rQy-y7-rTZ"/>
-                                    <constraint firstAttribute="trailing" secondItem="GA0-ai-bOT" secondAttribute="trailing" constant="43" id="yst-x4-wwq"/>
-                                    <constraint firstItem="GA0-ai-bOT" firstAttribute="top" secondItem="t5B-Ss-Ctf" secondAttribute="top" constant="32" id="zxZ-kd-1Ab"/>
-                                </constraints>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="t5B-Ss-Ctf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="108" id="9hy-4z-Njb"/>
-                            <constraint firstItem="t5B-Ss-Ctf" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="Wps-bS-jwh"/>
-                            <constraint firstItem="t5B-Ss-Ctf" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="axL-11-78H"/>
-                            <constraint firstItem="t5B-Ss-Ctf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="279" id="kOT-0y-7V2"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="t5B-Ss-Ctf" secondAttribute="bottom" constant="304" id="0nd-4D-yoi"/>
+                            <constraint firstItem="t5B-Ss-Ctf" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="E12-Q4-VuU"/>
+                            <constraint firstItem="t5B-Ss-Ctf" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="L9H-mA-iyw"/>
+                            <constraint firstItem="t5B-Ss-Ctf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="279" id="Tuj-MK-zFd"/>
+                            <constraint firstItem="t5B-Ss-Ctf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="108" id="oDh-5n-B7L"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="t5B-Ss-Ctf" secondAttribute="trailing" constant="108" id="tRs-4x-NY1"/>
                         </constraints>
                     </view>
                 </viewController>

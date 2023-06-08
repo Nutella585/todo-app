@@ -38,13 +38,36 @@ class TasksVC: UITableViewController {
     // Actions when segue unwind is performed
     @IBAction func unwindSegue(segue: UIStoryboardSegue) {
         guard segue.identifier == Identifiers.SAVE_SEGUE.rawValue else { return }
-        
         let sourceVC = segue.source as! NewTaskVC
         let task = sourceVC.task
-        let indexPath = IndexPath(row: tasks.count, section: 0)
         
-        tasks.append(task)
-        tableView.insertRows(at: [indexPath], with: .automatic)
+        // For editing task
+        if let selectedCellIndexPath = tableView.indexPathForSelectedRow {
+            tasks[selectedCellIndexPath.row] = task
+            tableView.reloadRows(at: [selectedCellIndexPath], with: .automatic)
+        }
+        // For adding new task
+        else {
+            let indexPath = IndexPath(row: tasks.count, section: 0)
+            tasks.append(task)
+            tableView.insertRows(at: [indexPath], with: .automatic)
+        }
+    }
+    
+    // Prepare `NewTaskVC` for editting with the values from the cell
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        guard segue.identifier == Identifiers.EDIT_SEGUE.rawValue else { return }
+        
+        let indexPath = tableView.indexPathForSelectedRow?.row
+        let choosenTask = self.tasks[indexPath!]
+        
+        let navigationVC = segue.destination as! UINavigationController
+        let editVC = navigationVC.topViewController as! NewTaskVC
+        
+        editVC.title = "Edit task"
+        editVC.task = choosenTask
+        
     }
     
     // ------------------------------

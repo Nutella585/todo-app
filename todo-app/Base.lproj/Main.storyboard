@@ -60,6 +60,7 @@
                                     <outlet property="descriptionTextLbl" destination="uyE-xv-Bge" id="P8k-NT-KoJ"/>
                                     <outlet property="headerTextLbl" destination="Fh0-tC-U7f" id="XLa-5Y-VZ2"/>
                                     <outlet property="taskImgView" destination="iV0-Bf-7Ak" id="G41-tZ-NUa"/>
+                                    <segue destination="ecf-0E-q17" kind="show" identifier="editSegue" id="fOg-tL-exS"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -259,6 +260,9 @@
             <point key="canvasLocation" x="1716.7938931297708" y="17.605633802816904"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="fOg-tL-exS"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="record.circle" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">

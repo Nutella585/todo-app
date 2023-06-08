@@ -2,8 +2,6 @@
 //  NewTaskVC.swift
 //  todo-app
 //
-//  Created by Andriy Pylo on 08.06.2023.
-//
 
 import UIKit
 
@@ -25,26 +23,27 @@ class NewTaskVC: UITableViewController {
         super.viewDidLoad()
         
         self.title = "Create new Todo"
-        saveBtn.isEnabled = false
+        updateSaveBtnState()
+        showValuesForEditing()
     }
     
+    //
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         guard segue.identifier == Identifiers.SAVE_SEGUE.rawValue else { return }
         
         task.name = nameTxtField.text ?? ""
         task.description = descriptionTxtField.text ?? ""
-        task.isImportant = isImportantSwitch.isEnabled
-        
-        print(self.task)
-        
+        task.isImportant = isImportantSwitch.isOn
     }
     
-    // Check for UITextFields values
-    @IBAction func txtFieldChanged(_ sender: UITextField) {
-        updateSaveBtnState()
+    // Show values from existing cell
+    private func showValuesForEditing () {
+        nameTxtField.text = task.name
+        descriptionTxtField.text = task.description
+        isImportantSwitch.isOn = task.isImportant
     }
-    
+
     // Update "Save" button
     private func updateSaveBtnState () {
         let name = nameTxtField.text ?? ""
@@ -53,4 +52,8 @@ class NewTaskVC: UITableViewController {
         saveBtn.isEnabled = !name.isEmpty && !description.isEmpty
     }
 
+    // Check for UITextFields values
+    @IBAction func txtFieldChanged(_ sender: UITextField) {
+        updateSaveBtnState()
+    }
 }
