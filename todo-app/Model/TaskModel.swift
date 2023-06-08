@@ -15,5 +15,5 @@ struct Job {
     var image       : UIImage!
     var name        : String
     var description : String
-    var isDone      : Bool
+    var isImportant : Bool
 }

@@ -12,19 +12,19 @@ class TasksVC: UITableViewController {
             image: UIImage(systemName: "record.circle")!, //  ---- ! ---
             name: "Example #1",
             description: "This is an example of the description of Job struct.",
-            isDone: false
+            isImportant: false
         ),
         Job(
             image: UIImage(systemName: "record.circle")!, //  ---- ! ---
             name: "Example #2",
             description: "This is an example of the description of Job struct.",
-            isDone: false
+            isImportant: false
         ),
         Job(
             image: UIImage(systemName: "record.circle")!, //  ---- ! ---
             name: "Example #3",
             description: "This is an example of the description of Job struct.",
-            isDone: false
+            isImportant: false
         ),
     ]
     
@@ -94,4 +94,45 @@ class TasksVC: UITableViewController {
         tableView.reloadData()
     }
     
+    // ------------------------------
+    // MARK: - Cell swiping actions
+    // ------------------------------
+    
+    // Actions for the leading side of the cell
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let actions: Array<UIContextualAction> = [
+            doneAction(for: indexPath),
+            importantAction(for: indexPath)
+        ]
+        
+        return UISwipeActionsConfiguration(actions: actions)
+    }
+    
+    // Action "Done"
+    func doneAction (for indexPath :IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .destructive, title: "Done", handler: {  action , view, completition in
+            self.tasks.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            completition(true)
+        })
+        action.backgroundColor = .systemGreen
+        action.image = UIImage(systemName: "checkmark.circle")
+        
+        return action
+    }
+    
+    // Action "Important"
+    func importantAction (for indexPath :IndexPath) -> UIContextualAction {
+        var task = tasks[indexPath.row]
+        let action = UIContextualAction(style: .normal, title: "Important", handler: {  action , view, completition in
+            task.isImportant = task.isImportant ? false : true
+            self.tasks[indexPath.row] = task
+            completition(true)
+        })
+        action.backgroundColor  = task.isImportant ? .systemYellow : .systemGray
+        action.image            = task.isImportant ? UIImage(systemName: "exclamationmark.triangle.fill") :
+                                                     UIImage(systemName: "exclamationmark.triangle")
+        
+        return action
+    }
 }
