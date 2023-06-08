@@ -13,6 +13,7 @@
 		E90787872A2A71B40048B20E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E90787862A2A71B40048B20E /* Assets.xcassets */; };
 		E907878A2A2A71B40048B20E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E90787882A2A71B40048B20E /* LaunchScreen.storyboard */; };
 		E90787922A2A71EF0048B20E /* TasksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90787912A2A71EF0048B20E /* TasksVC.swift */; };
+		E9C648752A31FBB4000BDDAB /* NewTaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C648742A31FBB4000BDDAB /* NewTaskVC.swift */; };
 		E9E168CF2A2CB75D00B6CEB8 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E168CE2A2CB75D00B6CEB8 /* TaskTableViewCell.swift */; };
 		E9E168D32A2CBDEC00B6CEB8 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E168D22A2CBDEC00B6CEB8 /* TaskModel.swift */; };
 /* End PBXBuildFile section */
@@ -26,6 +27,7 @@
 		E90787892A2A71B40048B20E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E907878B2A2A71B40048B20E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E90787912A2A71EF0048B20E /* TasksVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksVC.swift; sourceTree = "<group>"; };
+		E9C648742A31FBB4000BDDAB /* NewTaskVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskVC.swift; sourceTree = "<group>"; };
 		E9E168CE2A2CB75D00B6CEB8 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		E9E168D22A2CBDEC00B6CEB8 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -76,6 +78,7 @@
 		E90787932A2A71FC0048B20E /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				E9C648742A31FBB4000BDDAB /* NewTaskVC.swift */,
 				E90787912A2A71EF0048B20E /* TasksVC.swift */,
 			);
 			path = Controller;
@@ -173,6 +176,7 @@
 				E90787802A2A71B30048B20E /* SceneDelegate.swift in Sources */,
 				E9E168D32A2CBDEC00B6CEB8 /* TaskModel.swift in Sources */,
 				E90787922A2A71EF0048B20E /* TasksVC.swift in Sources */,
+				E9C648752A31FBB4000BDDAB /* NewTaskVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

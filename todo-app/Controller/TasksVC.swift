@@ -38,6 +38,18 @@ class TasksVC: UITableViewController {
         self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
     
+    // Actions when segue unwind is performed
+    @IBAction func unwindSegue(segue: UIStoryboardSegue) {
+        guard segue.identifier == "saveSegue" else { return }
+        
+        let sourceVC = segue.source as! NewTaskVC
+        let task = sourceVC.task
+        let indexPath = IndexPath(row: tasks.count, section: 0)
+        
+        tasks.append(task)
+        tableView.insertRows(at: [indexPath], with: .automatic)
+    }
+    
     // ------------------------------
     // MARK: - Table view data source
     // ------------------------------
