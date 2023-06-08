@@ -14,6 +14,8 @@
 		E907878A2A2A71B40048B20E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E90787882A2A71B40048B20E /* LaunchScreen.storyboard */; };
 		E90787922A2A71EF0048B20E /* TasksVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E90787912A2A71EF0048B20E /* TasksVC.swift */; };
 		E9C648752A31FBB4000BDDAB /* NewTaskVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C648742A31FBB4000BDDAB /* NewTaskVC.swift */; };
+		E9C648772A323072000BDDAB /* enum_identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C648762A323072000BDDAB /* enum_identifiers.swift */; };
+		E9C648792A3230B7000BDDAB /* enum_systemIcons.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C648782A3230B7000BDDAB /* enum_systemIcons.swift */; };
 		E9E168CF2A2CB75D00B6CEB8 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E168CE2A2CB75D00B6CEB8 /* TaskTableViewCell.swift */; };
 		E9E168D32A2CBDEC00B6CEB8 /* TaskModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E168D22A2CBDEC00B6CEB8 /* TaskModel.swift */; };
 /* End PBXBuildFile section */
@@ -28,6 +30,8 @@
 		E907878B2A2A71B40048B20E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E90787912A2A71EF0048B20E /* TasksVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksVC.swift; sourceTree = "<group>"; };
 		E9C648742A31FBB4000BDDAB /* NewTaskVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTaskVC.swift; sourceTree = "<group>"; };
+		E9C648762A323072000BDDAB /* enum_identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enum_identifiers.swift; sourceTree = "<group>"; };
+		E9C648782A3230B7000BDDAB /* enum_systemIcons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enum_systemIcons.swift; sourceTree = "<group>"; };
 		E9E168CE2A2CB75D00B6CEB8 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
 		E9E168D22A2CBDEC00B6CEB8 /* TaskModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -62,6 +66,7 @@
 		E907877C2A2A71B30048B20E /* todo-app */ = {
 			isa = PBXGroup;
 			children = (
+				E9C6487A2A3230CA000BDDAB /* Enums */,
 				E90787932A2A71FC0048B20E /* Controller */,
 				E9E168D02A2CB76100B6CEB8 /* Model */,
 				E9E168D12A2CBBDF00B6CEB8 /* View */,
@@ -82,6 +87,15 @@
 				E90787912A2A71EF0048B20E /* TasksVC.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		E9C6487A2A3230CA000BDDAB /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				E9C648762A323072000BDDAB /* enum_identifiers.swift */,
+				E9C648782A3230B7000BDDAB /* enum_systemIcons.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 		E9E168D02A2CB76100B6CEB8 /* Model */ = {
@@ -172,10 +186,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9E168CF2A2CB75D00B6CEB8 /* TaskTableViewCell.swift in Sources */,
+				E9C648772A323072000BDDAB /* enum_identifiers.swift in Sources */,
 				E907877E2A2A71B30048B20E /* AppDelegate.swift in Sources */,
 				E90787802A2A71B30048B20E /* SceneDelegate.swift in Sources */,
 				E9E168D32A2CBDEC00B6CEB8 /* TaskModel.swift in Sources */,
 				E90787922A2A71EF0048B20E /* TasksVC.swift in Sources */,
+				E9C648792A3230B7000BDDAB /* enum_systemIcons.swift in Sources */,
 				E9C648752A31FBB4000BDDAB /* NewTaskVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

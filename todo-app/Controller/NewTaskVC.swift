@@ -16,7 +16,6 @@ class NewTaskVC: UITableViewController {
     @IBOutlet weak var saveBtn              : UIBarButtonItem!
     
     var task = Job(
-        image: UIImage(systemName: "record.circle")!, //  ---- ! ---
         name: "",
         description: "",
         isImportant: false
@@ -31,7 +30,7 @@ class NewTaskVC: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        guard segue.identifier == "saveSegue" else { return }
+        guard segue.identifier == Identifiers.SAVE_SEGUE.rawValue else { return }
         
         task.name = nameTxtField.text ?? ""
         task.description = descriptionTxtField.text ?? ""
@@ -53,4 +52,5 @@ class NewTaskVC: UITableViewController {
         
         saveBtn.isEnabled = !name.isEmpty && !description.isEmpty
     }
+
 }

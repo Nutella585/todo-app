@@ -12,7 +12,7 @@ import UIKit
  */
 struct Job {
     /// Image that show on the left side of the `UITableViewCell`.
-    var image       : UIImage!
+    var image       : UIImage? = UIImage(systemName: "record.circle")
     var name        : String
     var description : String
     var isImportant : Bool

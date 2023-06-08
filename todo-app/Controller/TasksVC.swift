@@ -9,19 +9,16 @@ class TasksVC: UITableViewController {
     
     var tasks: Array<Job> = [
         Job(
-            image: UIImage(systemName: "record.circle")!, //  ---- ! ---
             name: "Example #1",
             description: "This is an example of the description of Job struct.",
             isImportant: false
         ),
         Job(
-            image: UIImage(systemName: "record.circle")!, //  ---- ! ---
             name: "Example #2",
             description: "This is an example of the description of Job struct.",
             isImportant: false
         ),
         Job(
-            image: UIImage(systemName: "record.circle")!, //  ---- ! ---
             name: "Example #3",
             description: "This is an example of the description of Job struct.",
             isImportant: false
@@ -40,7 +37,7 @@ class TasksVC: UITableViewController {
     
     // Actions when segue unwind is performed
     @IBAction func unwindSegue(segue: UIStoryboardSegue) {
-        guard segue.identifier == "saveSegue" else { return }
+        guard segue.identifier == Identifiers.SAVE_SEGUE.rawValue else { return }
         
         let sourceVC = segue.source as! NewTaskVC
         let task = sourceVC.task
@@ -66,7 +63,7 @@ class TasksVC: UITableViewController {
     
     // Row appearance
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cellTask", for: indexPath) as! TaskTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: Identifiers.CELL.rawValue, for: indexPath) as! TaskTableViewCell
         let task = tasks[indexPath.row]
         cell.set(task: task)
         
@@ -128,7 +125,7 @@ class TasksVC: UITableViewController {
             completition(true)
         })
         action.backgroundColor = .systemGreen
-        action.image = UIImage(systemName: "checkmark.circle")
+        action.image = UIImage(systemName: SystemIcons.CHECKMARK.rawValue)
         
         return action
     }
@@ -142,8 +139,8 @@ class TasksVC: UITableViewController {
             completition(true)
         })
         action.backgroundColor  = task.isImportant ? .systemYellow : .systemGray
-        action.image            = task.isImportant ? UIImage(systemName: "exclamationmark.triangle.fill") :
-                                                     UIImage(systemName: "exclamationmark.triangle")
+        action.image            = task.isImportant ? UIImage(systemName: SystemIcons.WARNING_FILL.rawValue) :
+                                                     UIImage(systemName: SystemIcons.WARNING.rawValue)
         
         return action
     }
