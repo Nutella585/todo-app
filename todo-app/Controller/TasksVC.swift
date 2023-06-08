@@ -7,11 +7,29 @@ import UIKit
 
 class TasksVC: UITableViewController {
     
+    var tasks: Array<Job> = [
+        Job(
+            image: UIImage(systemName: "record.circle")!, //  ---- ! ---
+            name: "Example #1",
+            description: "This is an example of the description of Job struct.",
+            isDone: false
+        ),
+        Job(
+            image: UIImage(systemName: "record.circle")!, //  ---- ! ---
+            name: "Example #2",
+            description: "This is an example of the description of Job struct.",
+            isDone: false
+        ),
+        Job(
+            image: UIImage(systemName: "record.circle")!, //  ---- ! ---
+            name: "Example #3",
+            description: "This is an example of the description of Job struct.",
+            isDone: false
+        ),
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
         
         // Shows title on top of the current ViewControllers screen
         self.title = "Your Todos"
@@ -20,73 +38,60 @@ class TasksVC: UITableViewController {
         self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
     
+    // ------------------------------
     // MARK: - Table view data source
+    // ------------------------------
     
+    // Section number
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
+    // Number of rows
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return tasks.count
     }
     
+    // Row appearance
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellTask", for: indexPath) as! TaskTableViewCell
-        
-        cell.headerTextLbl.text = "Brush teeth"
-        cell.descriptionTextLbl.text = "Dont forget to brush your teeth."
-        
-        // Setting content for cell
-//        var content = cell.defaultContentConfiguration()
-//        content.text = "\(indexPath)"
-//        cell.contentConfiguration = content
+        let task = tasks[indexPath.row]
+        cell.set(task: task)
         
         return cell
     }
     
-    /*
-     // Override to support conditional editing of the table view.
-     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the specified item to be editable.
-     return true
-     }
-     */
+    // ------------------------------
+    // MARK: - Editing cells in section
+    // ------------------------------
     
-    /*
-     // Override to support editing the table view.
-     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-     if editingStyle == .delete {
-     // Delete the row from the data source
-     tableView.deleteRows(at: [indexPath], with: .fade)
-     } else if editingStyle == .insert {
-     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-     }
-     }
-     */
+    // Editing style for cells when "Edit" button is pressed on `NavigationViewController`
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
     
-    /*
-     // Override to support rearranging the table view.
-     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-     
-     }
-     */
+    // Actions if cell is deleted
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            tasks.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        }
+    }
     
-    /*
-     // Override to support conditional rearranging of the table view.
-     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-     // Return false if you do not want the item to be re-orderable.
-     return true
-     }
-     */
+    // ------------------------------
+    // MARK: - Moving cells in section
+    // ------------------------------
     
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
+    // Is cells are movable.
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    // Move cell to other row.
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let movedTask = tasks.remove(at: sourceIndexPath.row)
+        tasks.insert(movedTask, at: destinationIndexPath.row)
+        tableView.reloadData()
+    }
     
 }
