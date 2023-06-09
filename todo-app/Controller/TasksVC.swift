@@ -35,7 +35,11 @@ class TasksVC: UITableViewController {
         self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
     
-    // Actions when segue unwind is performed
+    //
+    // Actions when segue unwind is performed. Like:
+    //      - adding new cells;
+    //      - editing already created;
+    //
     @IBAction func unwindSegue(segue: UIStoryboardSegue) {
         guard segue.identifier == Identifiers.SAVE_SEGUE.rawValue else { return }
         let sourceVC = segue.source as! NewTaskVC

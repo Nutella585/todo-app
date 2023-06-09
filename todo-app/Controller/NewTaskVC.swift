@@ -11,6 +11,10 @@ class NewTaskVC: UITableViewController {
     @IBOutlet weak var descriptionTxtField  : UITextField!
     @IBOutlet weak var isImportantSwitch    : UISwitch!
     
+    @IBOutlet weak var circleIconCheckmark      : UIImageView!
+    @IBOutlet weak var importantIconCheckmark   : UIImageView!
+    @IBOutlet weak var favouriteIconCheckmark   : UIImageView!
+    
     @IBOutlet weak var saveBtn              : UIBarButtonItem!
     
     var task = Job(
@@ -22,12 +26,37 @@ class NewTaskVC: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Create new Todo"
         updateSaveBtnState()
         showValuesForEditing()
+        
+        circleIconCheckmark.isHidden    = true
+        importantIconCheckmark.isHidden = true
+        favouriteIconCheckmark.isHidden = true
+        
+        self.title = "Create new Todo"
     }
     
-    //
+    // ------------------------------
+    // MARK: - Table view inherrited
+    // ------------------------------
+    
+    // If `UITextField` is changed, update "Save" button.
+    @IBAction func txtFieldChanged(_ sender: UITextField) {
+        updateSaveBtnState()
+    }
+    
+    // If `UISwitch is` changed, update "Save" button.
+    @IBAction func switchChanged (_ sender: UISwitch) {
+        updateSaveBtnState()
+    }
+    
+    // Update checkmarks for what kind of checkmark is choosen
+    // If cell with diffrnt icon was used, update "Save" button.
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        updateSaveBtnState()
+    }
+    
+    // Prepare data for segue back to `TaskVC`
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         guard segue.identifier == Identifiers.SAVE_SEGUE.rawValue else { return }
@@ -36,6 +65,10 @@ class NewTaskVC: UITableViewController {
         task.description = descriptionTxtField.text ?? ""
         task.isImportant = isImportantSwitch.isOn
     }
+    
+    // ------------------------------
+    // MARK: - Custom functions
+    // ------------------------------
     
     // Show values from existing cell
     private func showValuesForEditing () {
@@ -48,12 +81,42 @@ class NewTaskVC: UITableViewController {
     private func updateSaveBtnState () {
         let name = nameTxtField.text ?? ""
         let description = descriptionTxtField.text ?? ""
+        let currentImage = task.image
         
-        saveBtn.isEnabled = !name.isEmpty && !description.isEmpty
+        if let choosenCellIndexPath = tableView.indexPathForSelectedRow {
+            updateIcons(indexPath: choosenCellIndexPath)
+        }
+        
+        let newImage = task.image
+        
+        saveBtn.isEnabled = (!name.isEmpty && !description.isEmpty) || currentImage != newImage
     }
-
-    // Check for UITextFields values
-    @IBAction func txtFieldChanged(_ sender: UITextField) {
-        updateSaveBtnState()
+    
+    // Update icons in "Icons" section
+    private func updateIcons (indexPath: IndexPath) {
+        switch indexPath {
+        case [3, 0]: // "Circle" icon
+            circleIconCheckmark.isHidden    = false
+            importantIconCheckmark.isHidden = true
+            favouriteIconCheckmark.isHidden = true
+            
+            self.task.image = UIImage(systemName: SystemIcons.CIRCLE.rawValue)
+            
+        case [3, 1]: // "Important" icon
+            circleIconCheckmark.isHidden    = true
+            importantIconCheckmark.isHidden = false
+            favouriteIconCheckmark.isHidden = true
+            
+            task.image = UIImage(systemName: SystemIcons.IMPORTANT.rawValue)
+            
+        case [3, 2]: // "Favourite" icon
+            circleIconCheckmark.isHidden    = true
+            importantIconCheckmark.isHidden = true
+            favouriteIconCheckmark.isHidden = false
+            
+            self.task.image = UIImage(systemName: SystemIcons.HEART.rawValue)
+            
+        default:  return
+        }
     }
 }
