@@ -4,8 +4,7 @@ This is a simple iOS Todo app built using `UITableViewController`. The app allow
 
 ## Screenshots
 
-![Screenshot 1](screenshot1.png)
-![Screenshot 2](screenshot2.png)
+![Overall](md-images/overall.jpg)
 
 ## Features
 
